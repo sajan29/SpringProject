@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <c:set var="contextRoot" value="${pageContext.request.contextPath}"></c:set>
-<spring:url var="css" value="webapp/css" />
+<spring:url var="css" value="/webapp/css" />
 <spring:url var="js" value="/webapp/js" />
 <spring:url var="images" value="/webapp/images" />
 
@@ -30,8 +30,8 @@
 <link href="${css}/bootstrap-cosmo-theme.css" rel="stylesheet">
 
 <script>
-    	window.menu="${title}";
-    </script>
+	window.menu = "${title}";
+</script>
 
 </head>
 
@@ -53,7 +53,9 @@
 			<c:if test="${UserClickContact==true}">
 				<%@include file="contact.jsp"%>
 			</c:if>
-
+			<c:if test="${UserClickAllProducts==true or UserClickCategoryProducts==true}">
+				<%@include file="listProducts.jsp"%>
+			</c:if>
 		</div>
 		<!-- Footer -->
 		<%@include file="./shared/footer.jsp"%>
